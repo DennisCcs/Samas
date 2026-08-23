@@ -1,6 +1,5 @@
 package pe.edu.upeu;
-
-//Nombre de la clase
+//Nombre de Clase
 public class Producto {
 
     //Atributos
@@ -8,9 +7,7 @@ public class Producto {
     String nombre;
     double precio;
     int stock;
-    double cantidad;
-    double igv= getIgv();
-
+    double igv;
 
     //Constructor, si hay mas de un constructor se denomina sobre carga de constructores
     public Producto(String codigo,
@@ -20,7 +17,7 @@ public class Producto {
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
-        this.igv = getIgv();
+        this.igv=getIgv();
     }
     public Producto(String codigo,
                     String nombre, double precio) {
@@ -28,9 +25,8 @@ public class Producto {
     }
     //Metodos
     public double getIgv() {
-        if (precio<0)
+        if(precio<0)
             throw new IllegalArgumentException();
-
         return precio*0.18;
     }
 }
