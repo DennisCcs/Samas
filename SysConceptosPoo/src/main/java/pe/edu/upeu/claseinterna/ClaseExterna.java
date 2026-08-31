@@ -10,6 +10,7 @@ public class ClaseExterna {
         this.oper=oper;
     }
     class ClaseInterna{
+
         double operacion(int num1, int num2, char oper){
             double resul=0;
             switch (oper){
