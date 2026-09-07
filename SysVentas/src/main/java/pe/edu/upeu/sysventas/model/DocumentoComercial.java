@@ -1,19 +1,20 @@
 package pe.edu.upeu.sysventas.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class DocumentoComercial {
+@NoArgsConstructor
+@AllArgsConstructor
+public abstract class DocumentoComercial {
+    private Long id;
+    private double precioBase;
+    private double igv;
+    private double precioTotal;
+    private String serie;
+    private String numDoc;
+    private String tipoDoc;
 
-    Long id;
-    double precioBase;
-    double igv;
-    double precioTotal;
-    String serie;
-    String numDoc;
-    String tipoDoc;
-
-    public  double calcularTotal(){
-        return  precioTotal;
-    }
+    public abstract double calcularTotal();
 }

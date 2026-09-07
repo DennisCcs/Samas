@@ -4,25 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Venta extends DocumentoComercial{
-    //private Long idVenta;
-    //private Double preciobase;
+public class Compra extends DocumentoComercial {
+
+    //private Long idCompra;
+    //private Double precioBase;
     //private Double igv;
     //private Double preciototal;
-    private Cliente dniruc;
+    private Proveedor idProveedor;
     private Usuario idUsuario;
-    //private String numDoc;
-    private LocalDateTime fechaGener;
     //private String serie;
+    //private String numDoc;
+    private LocalDate fechaComp;
     //private String tipoDoc;
-    private List<VentaDetalle> detalleVenta;
+    private LocalDate fechaReg;
+    private List<CompraDetalle> detalleCompra;
 
     @Override
     public double calcularTotal() {

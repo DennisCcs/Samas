@@ -5,16 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pe.edu.upeu.sysventas.enums.TipoDocumento;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class Proveedor {
+    private Long idProveedor;
     private String dniruc;
-    private String nombres;
-    private TipoDocumento tipoDocumento;
-    private String repLegal;
+    private String nombresRaso;
+    private String tipoDoc;
+    private String celular;
+    private String email;
     private String direccion;
 }

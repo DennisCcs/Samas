@@ -9,12 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VentaDetalle {
-    private Long idVentaDetalle;
+public class CompraDetalle {
+    private Long idCompraDetalle;
     private Double pu;
     private Double cantidad;
-    private Double descuento;
     private Double subtotal;
-    private Venta idVenta;
+    private Compra idCompra;
     private Producto idProducto;
 }
