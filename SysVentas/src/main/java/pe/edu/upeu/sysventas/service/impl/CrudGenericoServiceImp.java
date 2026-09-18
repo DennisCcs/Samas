@@ -1,42 +1,42 @@
 package pe.edu.upeu.sysventas.service.impl;
 
-import pe.edu.upeu.sysventas.exception.ModelNotfoundException;
+import pe.edu.upeu.sysventas.exception.ModelNotFoundException;
 import pe.edu.upeu.sysventas.repository.ICrudGenericoRepository;
 import pe.edu.upeu.sysventas.service.ICrudGenericoService;
 
 import java.util.List;
 
-public abstract class CrudGenericoServiceImp<T, ID> implements ICrudGenericoService<T, ID>{
-    protected abstract ICrudGenericoRepository<T, ID> gerRepo();
+public abstract class CrudGenericoServiceImp<T, ID> implements ICrudGenericoService<T, ID> {
+    protected abstract ICrudGenericoRepository<T,ID> getRepo();
 
     @Override
     public T save(T t) {
-        return gerRepo().save(t);
+        return getRepo().save(t);
     }
 
     @Override
     public T update(ID id, T t) {
-        if (!gerRepo().existsById(id)){
-            throw new ModelNotfoundException("ID no existe: "+id);
+        if(!getRepo().existsById(id)){
+            throw new ModelNotFoundException("ID no existe: "+id);
         }
-        return gerRepo().update(t);
+        return getRepo().update(t);
     }
 
     @Override
     public List<T> findAll() {
-        return gerRepo().findAll();
+        return getRepo().findAll();
     }
 
     @Override
-    public T findByid(ID id) {
-        return gerRepo().findById(id).orElseThrow(()->new ModelNotfoundException("El id no exixte: "+id));
+    public T findById(ID id) {
+        return getRepo().findById(id).orElseThrow(()->new ModelNotFoundException("El Id no existe:"+id));
     }
 
     @Override
     public void delete(ID id) {
-        if (!gerRepo().existsById(id)) {
-            throw new ModelNotfoundException("ID no existe: " + id);
+        if(!getRepo().existsById(id)){
+            throw new ModelNotFoundException("ID no existe: "+id);
         }
-        gerRepo().deleteById(id);
+        getRepo().deleteById(id);
     }
 }

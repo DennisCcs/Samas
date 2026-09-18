@@ -10,7 +10,8 @@ public enum TipoProducto {
 
     String descripcion;
 
-    TipoProducto(String descripcion) {
+    TipoProducto(String descripcion){
         this.descripcion=descripcion;
     }
+
 }

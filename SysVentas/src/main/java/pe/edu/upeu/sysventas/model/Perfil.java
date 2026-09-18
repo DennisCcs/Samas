@@ -1,19 +1,15 @@
 package pe.edu.upeu.sysventas.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
 public class Perfil {
-    private Long idPerfil;
-    private String nombre;
-    private String codigo;
-    private List<Acceso> accesos;
+    Long idPerfil;
+    String nombre;
+    String codigo;
+    List<Acceso> accesos; //Agregacion
 }

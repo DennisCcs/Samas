@@ -1,7 +1,7 @@
 package pe.edu.upeu.sysventas.exception;
 
-public class ModelNotfoundException extends RuntimeException{
-    public ModelNotfoundException(String message) {
+public class ModelNotFoundException extends RuntimeException{
+    public ModelNotFoundException(String message) {
         super(message);
     }
 }
