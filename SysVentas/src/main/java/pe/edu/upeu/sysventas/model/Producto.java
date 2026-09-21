@@ -20,8 +20,11 @@ public class Producto {
     @NotBlank(message = "El nombre del producto es obligatorio")
     private String nombre;
 
+
+    @NotNull(message = "El tipo producto producto es obligatoria")
     private TipoProducto tipoProducto;
-    @NotNull(message = "El precio del producto es obligatorio")
+
+    @NotNull(message = "El tipo producto es obligatorio")
     @Positive(message = "El precio del producto debe ser positivo")
     private Double pu;
     @NotNull(message = "El precio anterior del producto es obligatorio")
@@ -36,10 +39,10 @@ public class Producto {
     @NotNull(message = "El stock anterior del producto es obligatorio")
     @PositiveOrZero(message = "El stock anterior del producto debe ser positivo")
     private Double stockold;
-    //@NotNull(message = "La categoria del producto es obligatoria")
+    @NotNull(message = "La categoria del producto es obligatoria")
     private Categoria idCategoria;
-    //@NotNull(message = "La marca del producto es obligatoria")
+    @NotNull(message = "La marca del producto es obligatoria")
     private Marca idMarca;
-    //@NotNull(message = "La unidad de medida del producto es obligatoria")
+    @NotNull(message = "La unidad de medida del producto es obligatoria")
     private UnidMedida idUnidad;
 }
