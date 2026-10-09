@@ -39,7 +39,7 @@ public class AppContext {
         registrar(UnidadMedidaRepository.class,  new UnidadMedidaRepository());
         registrar(ProductoRepository.class,      new ProductoRepository());
 
-    }
+    }   
 
     // CAPA 2 — SERVICIOS
     // Cada servicio recibe su repositorio por constructor.
@@ -59,6 +59,7 @@ public class AppContext {
     // El FXMLLoader los busca aquí a través de setControllerFactory().
     private void registrarControladores() {
         //registrar(LoginController.class, new LoginController(getBean(IUsuarioService.class)));
+        registrar(MainguiController.class,new MainguiController());
         registrar(ProductoController.class,
                 new ProductoController(
                         getBean(IMarcaService.class),

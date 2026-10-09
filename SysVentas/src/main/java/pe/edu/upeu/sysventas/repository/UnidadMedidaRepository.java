@@ -1,28 +1,46 @@
 package pe.edu.upeu.sysventas.repository;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import pe.edu.upeu.sysventas.model.Categoria;
 import pe.edu.upeu.sysventas.model.UnidMedida;
 
 public class UnidadMedidaRepository extends AbstractJpaRepository<UnidMedida, Long>{
-    private long sequence=1;
+
     @Override
-    protected Long getId(UnidMedida entity) {
-        return entity.getIdUnidad();
+    protected String getPkColumn() {
+        return "id_unidad";
     }
 
     @Override
-    protected void setId(UnidMedida entity, Long id) {
+    protected String getTableName() {
+        return "unid_medida";
+    }
+
+    @Override
+    protected UnidMedida insert(Connection connection, UnidMedida entity) throws SQLException {
+        long id=executeInsertGetKey(connection, 
+            " insert intro unid_medida(nombre_medida) values(?) "
+            , entity.getNombreMedida());
         entity.setIdUnidad(id);
+        return null;
     }
 
     @Override
-    protected Long generateId() {
-        return sequence++;
+    protected UnidMedida updateRow(Connection connection, UnidMedida entity) throws SQLException {
+        executeUpdate(connection, " update unid_medida set nombre_medida=? where id_unidad=? ",
+         entity.getNombreMedida(), 
+         entity.getIdUnidad());
+        return entity;
     }
-    public void seedData() {
-        if (findAll().isEmpty()) {
-            save(new UnidMedida(generateId(), "Unidad"));
-            save(new UnidMedida(generateId(),"Litros"));
-        }
+
+    @Override
+    protected UnidMedida mapRow(ResultSet rs) throws SQLException {
+        return UnidMedida.builder()
+        .idUnidad(rs.getLong("id_unidad"))
+        .nombreMedida(rs.getString("nombre_medida"))
+        .build();
     }
 }
